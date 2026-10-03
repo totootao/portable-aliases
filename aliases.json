@@ -1,0 +1,127 @@
+{
+  "settings": [
+    "shopt -s expand_aliases 2\u003e/dev/null || true"
+  ],
+  "entries": [
+    {
+      "type": "alias",
+      "name": "ll",
+      "value": "ls -alF --color=auto"
+    },
+    {
+      "type": "alias",
+      "name": "la",
+      "value": "ls -A --color=auto"
+    },
+    {
+      "type": "alias",
+      "name": "l",
+      "value": "ls -CF --color=auto"
+    },
+    {
+      "type": "alias",
+      "name": "lt",
+      "value": "ls -alFtr --color=auto"
+    },
+    {
+      "type": "alias",
+      "name": "..",
+      "value": "cd .."
+    },
+    {
+      "type": "alias",
+      "name": "...",
+      "value": "cd ../.."
+    },
+    {
+      "type": "alias",
+      "name": "....",
+      "value": "cd ../../.."
+    },
+    {
+      "type": "alias",
+      "name": "df",
+      "value": "df -h"
+    },
+    {
+      "type": "alias",
+      "name": "du",
+      "value": "du -h"
+    },
+    {
+      "type": "alias",
+      "name": "free",
+      "value": "free -m"
+    },
+    {
+      "type": "alias",
+      "name": "psg",
+      "value": "ps aux | grep -i"
+    },
+    {
+      "type": "alias",
+      "name": "ports",
+      "value": "ss -tulanp"
+    },
+    {
+      "type": "alias",
+      "name": "myip",
+      "value": "curl -s https://ifconfig.me"
+    },
+    {
+      "type": "alias",
+      "name": "ping",
+      "value": "ping -c 4"
+    },
+    {
+      "type": "alias",
+      "name": "g",
+      "value": "git"
+    },
+    {
+      "type": "alias",
+      "name": "gs",
+      "value": "git status -s"
+    },
+    {
+      "type": "alias",
+      "name": "ga",
+      "value": "git add"
+    },
+    {
+      "type": "alias",
+      "name": "gc",
+      "value": "git commit -m"
+    },
+    {
+      "type": "alias",
+      "name": "gp",
+      "value": "git push"
+    },
+    {
+      "type": "alias",
+      "name": "gl",
+      "value": "git pull"
+    },
+    {
+      "type": "function",
+      "name": "mkcd",
+      "value": "mkdir -p \"$1\" \u0026\u0026 cd \"$1\""
+    },
+    {
+      "type": "function",
+      "name": "ff",
+      "value": "find . -type f -iname \"*$1*\""
+    },
+    {
+      "type": "function",
+      "name": "extract",
+      "value": "if [ -f \"$1\" ]; then\n  case \"$1\" in\n    *.tar.bz2) tar xjf \"$1\" ;;\n    *.tar.gz)  tar xzf \"$1\" ;;\n    *.bz2)     bunzip2 \"$1\" ;;\n    *.gz)      gunzip \"$1\" ;;\n    *.tar)     tar xf \"$1\" ;;\n    *.tbz2)    tar xjf \"$1\" ;;\n    *.tgz)     tar xzf \"$1\" ;;\n    *.zip)     unzip \"$1\" ;;\n    *.Z)       uncompress \"$1\" ;;\n    *.7z)      7z x \"$1\" ;;\n    *) echo \"'$1' 不是可识别的压缩格式\" ;;\n  esac\nelse\n  echo \"'$1' 不是有效文件\"\nfi"
+    },
+    {
+      "type": "function",
+      "name": "bigfiles",
+      "value": "du -h \"$@\" 2\u003e/dev/null | sort -rh | head -10"
+    }
+  ]
+}

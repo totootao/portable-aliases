@@ -1,0 +1,22 @@
+# 两个服务共用同一份别名文件:
+#   web   —— Go 实现的 Web 管理界面 (http://localhost:8080), 编辑 aliases.json 并重新生成 aliases.sh
+#   shell —— 带全套别名的交互式 bash, source 同一个 aliases.sh
+# 在宿主机修改 ./aliases.sh 也会实时反映到 shell 容器(新开 shell 生效)
+services:
+  web:
+    build: .
+    image: myaliases:latest
+    command: /app/app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./aliases.json:/app/aliases.json
+      - ./aliases.sh:/app/aliases.sh
+
+  shell:
+    image: myaliases:latest
+    command: bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./aliases.sh:/etc/aliases.sh
